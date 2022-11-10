@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="测试一下">
+    <file>bitbug_favicon.ico</file>
+    <file>紫色树背景.jpg</file>
+  </qresource>
+  <qresource prefix="新前缀"/>
+</RCC>

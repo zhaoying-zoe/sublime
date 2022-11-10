@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	document.addEventListener('visibilitychange', function () {
+		if (document.visibilityState === 'hidden') {
+			console.log('当前页面不可见');
+		}
+		if (document.visibilityState === 'visible') {
+			console.log('当前页面可见');
+		}
+	});
+</script>
+</html>

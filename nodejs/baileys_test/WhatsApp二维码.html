@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">请求二维码</button>
+	<img
+		src=""
+		width="400"
+		height="400"
+		alt="">
+</body>
+<script src="./jquery-3.6.0.min.js"></script>
+<script>
+	// console.log($.ajax);
+	// console.log($('#btn')[0]);
+	$('#btn')[0].onclick = function() {
+		// console.log($('#btn')[0]);
+		 const configObj = {
+		       method: 'POST',   //数据的提交方式：get和post
+		       url: 'https://10.2.2.172:8080/api/getQrCode',   //数据的提交路劲
+		       headers: {
+					'Content-Type':'application/json'
+				},
+		       // async   //是否支持异步刷新，默认是true
+		       data: 'uuid: 10110-6418-{{$guid}}_md',    //需要提交的数据
+		       type: 'JSON',
+		       // dataType   //服务器返回数据的类型，例如xml,String,Json等
+		       success: function(data) {
+		       	console.error(data);
+		       	// $('img').src = data.src;
+		       },    //请求成功后的回调函数
+		       error: function(error) {
+		       	console.error(error)
+		       }   //请求失败后的回调函数
+		    }
+
+		$.ajax(configObj);//通过$.ajax函数进行调用。
+	}
+</script>
+</html>

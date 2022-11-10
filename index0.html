@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let map = {};
+		let obj = [
+			{
+				id: 1001,
+			},
+			{
+				id: 1002,
+			},
+			{
+				id: 1003,
+			},
+			{
+				id: 1004,
+			},
+			{
+				id: 1005,
+			}
+		]
+		obj.forEach( function(item, index) {
+			// statements
+			const attrId = item.id;
+			map[attrId] = index;
+		});
+		console.log(map);
+
+
+        // 根据对象某个属性的值来获取其他属性的值
+        let arr = [
+            {
+                key: 1,
+                value: '地址'
+            },
+            {
+                key: 2,
+                value: '姓名'
+            },
+            {
+                key: 3,
+                value: '年龄'
+            },
+            {
+                key: 4,
+                value: '电话'
+            }
+        ]
+        let a = [1, 2, 3]
+        let b = []
+        // 第二种：使用find方法寻找，个人推荐这种方式
+        for (let i = 0; i < a.length; i++) {
+            arr.find((obj) => {
+                if (obj.key == a[i]) {
+                    b.push({
+                        label: obj.value,
+                        key: i
+                    })
+                }
+            })
+        }
+        console.log(b)
+
+        // 第一种：使用for嵌套循环，需要注意性能优化，将循环次数少的放在外面
+        for (let i = 0; i < a.length; i++) {
+            for (let j = 0; j < arr.length; j++) {
+                if (a[i] == arr[j].key) {
+                    console.log(arr[j].value)
+                }
+            }
+        }
+	</script>
+</body>
+</html>
