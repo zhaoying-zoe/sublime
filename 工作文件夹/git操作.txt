@@ -1,0 +1,37 @@
+//新建分支	
+git branch fix-分支名-日期
+//切换分支	
+git checkout fix-分支名-日期
+//推送新建的分支	
+git status > git add . > git commit -m'' > git push origin fix-分支名-日期
+//本地master分支(旧代码)抓取远程master分支新代码
+git pull origin 
+
+//删除本地分支
+git branch -D 分支名
+
+//查询当前远程的版本
+$ git remote -v
+//获取最新代码到本地(本地当前分支为[branch]，获取的远端的分支为[origin/branch])
+$ git fetch origin master  [示例1：获取远端的origin/master分支]
+
+
+//查看版本差异	如果得出的结果是 0，代表本地仓库是最新的
+$ git log master..origin/master --oneline | wc -l
+	
+
+//合并最新代码到本地分支
+$ git merge origin/master  [示例1：合并分支master到 > 当前分支]
+
+
+//十. 当伙伴修改代码提交到远程master分支时，怎么合并拉去最新代码
+https://www.cnblogs.com/wangRong-smile/articles/12118191.html
+
+5 合并到test分支：本地新建分支  推送到远程    Create merge request   合并到test分支上（显示落后别人多少是正确的）   更改tapd的任务状态    把patd和gitlab的地址发给测试（谭豪）
+	进入小机房环境测试，访问admin地址（更改测试环境） 准备上线（上线的事，是别人做，等上线完成后删掉 之前新建的分支）
+
+6 合并到master分支：获取远程maste最新代码到本地master，本地master代码与本地分支(fix_zy_210729)合并，合并后，本地fix分支推送到远程fix分支，
+	gitlab提交合并请求（fix分支合并到master分支上）；  最后通知产品经理，并且创建发布评审（tapd>更多>发布评审）；
+
+7 解决冲突： 本地分支(feat-) 合并到test分支时出现了冲突： 先拉取test-conflictResolution分支并拉取最新代码，不切换分支，拉取test代码到本地test-conflictResolution分支，如果有冲突则解决冲突，
+	解决冲突后，合并feat分支到test-conflictResolution分支(有冲突则解决冲突)，最后push到远端，在gitlab上  Create merge request；

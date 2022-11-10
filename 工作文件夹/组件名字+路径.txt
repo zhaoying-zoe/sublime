@@ -1,0 +1,7 @@
+1. WhatsAppModal		src\views\main-components\timeline\WhatsApp\modal\WhatsAppModal.vue   		whatapp登陆页的弹窗二维码登陆组件
+2. WhatsAppReplyModal	src\views\main-components\timeline\WhatsApp\modal\WhatsAppReplyModal.vue   	whatapp聊天加扫码登陆组件
+3.whatsAppMsgItem		src\views\whatsapp-manage\whatsApp-chat-frame\whatsAppSend.vue			whatapp聊天加扫码登陆组件>发送按钮
+4.whatsAppMsgItem		.src\views\whatsapp-manage\whatsApp-chat-frame\whatsAppMsgItem.vue		whatapp聊天加扫码登陆组件>聊天窗口
+
+
+
