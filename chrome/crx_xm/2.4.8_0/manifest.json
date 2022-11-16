@@ -1,0 +1,74 @@
+{
+  "background": {
+    "scripts": ["scripts/background.js"]
+  },
+  "browser_action": {
+    "default_icon": {
+      "128": "img/icon@128.png",
+      "16": "img/icon@16.png",
+      "48": "img/icon@48.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "正在运行"
+  },
+  "content_scripts": [
+    {
+      "css": ["css/googleSearch.css"],
+      "js": ["scripts/googleSearch.js"],
+      "matches": [
+        "*://*.google.com/search*",
+        "*://*.google.com.hk/search*",
+        "*://*.google.com.tw/search*",
+        "*://*.google.com.au/search*",
+        "*://*.google.co.jp/search*",
+        "*://*.google.co.uk/search*",
+        "*://*.google.fr/search*",
+        "*://*.google.de/search*",
+        "*://*.google.it/search*",
+        "*://*.google.nl/search*",
+        "*://*.google.ch/search*"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "css": ["css/finder.css"],
+      "exclude_matches": ["*://*.xiaoman.cn/*", "*://*.xiaoman.site/*", "*://*.xiaoman.co/*", "*://*.xiaoman.cc/*", "*://*.m.tips/*", "*://web.whatsapp.com/*"],
+      "js": ["scripts/finder.js"],
+      "matches": ["\u003Call_urls>"],
+      "run_at": "document_end"
+    },
+    {
+      "css": ["css/content.css"],
+      "js": ["scripts/content.js"],
+      "matches": ["\u003Call_urls>"],
+      "run_at": "document_end"
+    },
+    {
+      "all_frames": true,
+      "css": ["css/whatsapp.css"],
+      "js": ["scripts/whatsapp.js"],
+      "matches": ["https://web.whatsapp.com/*"],
+      "run_at": "document_end"
+    },
+    {
+      "js": ["scripts/alibabaLoginContent.js"],
+      "matches": ["*://*.xiaoman.cn/*", "*://work.okki.com/*"],
+      "run_at": "document_end"
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://cfile.xiaoman.cn; object-src 'self'",
+  "default_locale": "zh_CN",
+  "description": "小满助手",
+  "icons": {
+    "128": "img/icon@128.png",
+    "16": "img/icon@16.png",
+    "48": "img/icon@48.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu9dn8MZFQwpam1rH5om3p8AmxLPfkCbUSB4jy37Eh/LUnxRZAcGKz+Hq28m7kNwfHhYPbHNqeHN5OxKLHy7xFOdyVnzoO7OoXfvl0oMmkbWlOrYgeRXM3nQnxskbcZg5iuBN/yE23zw6jgLkdq70u35nZ6dyCdkKy4r8IVJ7MXOuJcnSzA+WHZoD/SnA5WNHN/G8/GVq+kc9sbInNzlfRdyIre1ScCmPhRzE0vHK2jPkHAuBm5RyVoUVV05U7f8fkYIdUoD7y54md74j7ynELIStchmZ6u+54CwUZmpEZknftjWC6kFK1GAOS9HHeziyqw9cyUOW331Fhoqw4CRHBwIDAQAB",
+  "manifest_version": 2,
+  "name": "小满助手",
+  "permissions": ["webRequest", "webRequestBlocking", "tabs", "nativeMessaging", "background", "proxy", "cookies", "storage", "\u003Call_urls>"],
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "version": "2.4.8",
+  "web_accessible_resources": ["img/*", "scripts/alibabaLoginInject.js", "scripts/xiaomanBaseInject.js", "scripts/whatsappInject.js"]
+}

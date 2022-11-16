@@ -1,0 +1,86 @@
+{
+  "delivery": {
+    "description": "pop界面信息",
+    "message": "提高普邮送达率"
+  },
+  "exception": {
+    "description": "描述信息",
+    "message": "有异常"
+  },
+  "extName": {
+    "description": "扩展名称",
+    "message": "小满助手"
+  },
+  "goUpdate": {
+    "description": "pop界面信息",
+    "message": "前往更新"
+  },
+  "helpCenter": {
+    "description": "描述信息",
+    "message": "小满帮助中心"
+  },
+  "hunter": {
+    "description": "pop界面信息",
+    "message": "邮箱猎手"
+  },
+  "lastHunter": {
+    "description": "描述信息",
+    "message": "最近一次抓取:"
+  },
+  "lastSend": {
+    "description": "pop界面信息",
+    "message": "最近发送"
+  },
+  "login": {
+    "description": "描述信息",
+    "message": "登陆"
+  },
+  "loginResultTips": {
+    "description": "描述信息",
+    "message": "当前页面到$count$个有效邮箱，查看全部",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "notLogin": {
+    "description": "描述信息",
+    "message": "您未登陆"
+  },
+  "notLoginResultTips": {
+    "description": "描述信息",
+    "message": "当前页面抓取到$count$个有效邮箱，登录查看全部",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "notLoginTips": {
+    "description": "描述信息",
+    "message": "登陆后，抓取结果会自动保存到联系人列表中"
+  },
+  "notRuning": {
+    "description": "描述信息",
+    "message": "未运行"
+  },
+  "proxy": {
+    "description": "pop界面信息",
+    "message": "系统加速"
+  },
+  "runing": {
+    "description": "描述信息",
+    "message": "运行中"
+  },
+  "showException": {
+    "description": "pop界面信息",
+    "message": "查看异常"
+  },
+  "updated": {
+    "description": "描述信息",
+    "message": "有更新"
+  }
+}

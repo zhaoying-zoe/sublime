@@ -1,0 +1,287 @@
+.importButton__linkedin-people-import-button__3j7sc_0 {
+  border-radius: 2px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 24px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  transition-duration: 167ms;
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  vertical-align: middle;
+  background: #2ad2a2;
+  margin-left: 4px;
+}
+.importButton__linkedin-people-import-button__3j7sc_0.importButton__allow__eXebk_0 {
+  background: #ff6868;
+}
+.importButton__linkedin-people-import-button__3j7sc_0.importButton__allow__eXebk_0:hover {
+  background-color: #ec4a4c;
+}
+.importSystem__linkedin-import-system-mask__3zq2__0 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 999999999;
+}
+.importSystem__linkedin-import-system__tEliC_0 {
+  position: absolute;
+  left: 50%;
+  top: 153px;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  line-height: 1;
+  font-size: 12px;
+  text-align: left;
+  background: #fff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  width: 560px;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, PingFang SC, Hiragino Sans GB, STHeiti, Microsoft YaHei, Microsoft JhengHei, Source Han Sans SC,
+    Noto Sans CJK SC, Source Han Sans CN, Noto Sans SC, Source Han Sans TC, Noto Sans CJK TC, WenQuanYi Micro Hei, SimSun, sans-serif;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__header__281L7_0 {
+  border-bottom: 1px solid #f0f0f0;
+  height: 48px;
+  padding-left: 18px;
+  position: relative;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__header-title__1y3TL_0 {
+  line-height: 48px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #454545;
+  letter-spacing: 1px;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__header-close__WnRTO_0 {
+  position: absolute;
+  right: 18px;
+  top: 11px;
+  cursor: pointer;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__header-close__WnRTO_0 img {
+  display: block;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__import-status__394Nw_0 {
+  padding: 24px 0;
+  text-align: center;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__import-status-text__Bzm0F_0 {
+  padding-top: 24px;
+  font-size: 16px;
+  color: #454545;
+  letter-spacing: 0.4px;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__import-status-text__Bzm0F_0 span {
+  color: #ff6868;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__import-system-main__3rWN6_0 {
+  position: relative;
+  border-top: 1px solid #f0f0f0;
+  padding-right: 4px;
+  padding: 20px 0;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-list__1svaj_0 {
+  padding: 0 34px;
+  box-sizing: border-box;
+  max-height: 340px;
+  overflow-y: auto;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-list__1svaj_0::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-list__1svaj_0::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  width: 5px;
+  border-radius: 4px;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-list__1svaj_0::-webkit-scrollbar-thumb {
+  border-radius: 9px;
+  background-color: #dcdcdc;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-list__1svaj_0::-webkit-scrollbar-thumb:hover {
+  background-color: #959595;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-item__1L8IA_0 {
+  display: flex;
+  align-items: center;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-item__1L8IA_0:not(:last-child) {
+  margin-bottom: 20px;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-item__1L8IA_0 .importSystem__avatar__1TeS2_0 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 24px;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-item__1L8IA_0 .importSystem__avatar__1TeS2_0 img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #b3b6b9;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-item__1L8IA_0 .importSystem__name__E5KSB_0,
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-item__1L8IA_0 .importSystem__position__2UZWi_0 {
+  width: 202px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #454545;
+  letter-spacing: 0.34px;
+  line-height: 1;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__member-item__1L8IA_0 .importSystem__name__E5KSB_0 {
+  margin-right: 24px;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__import-system-footer__3Wh2O_0 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+.importSystem__linkedin-import-system__tEliC_0 .importSystem__import-system-show-detail__2brgX_0 {
+  width: 120px;
+  height: 36px;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 1px;
+  line-height: 36px;
+  background: #ff6868;
+  display: inline-block;
+}
+@keyframes success__checkmark__1OE_m_0 {
+  0% {
+    stroke-dashoffset: 17px;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes success__checkmark-circle__16QDJ_0 {
+  0% {
+    stroke-dashoffset: 76px;
+  }
+  to {
+    stroke-dashoffset: 0px;
+  }
+}
+.success__ui-component-success__kNBOV_0 {
+  display: inline-block;
+}
+.success__ui-component-success__kNBOV_0 .success__svg-success__3l2vx_0 {
+  fill: none;
+}
+.success__ui-component-success__kNBOV_0 .success__svg-success__3l2vx_0 path {
+  stroke-dasharray: 17px, 17px;
+  stroke-dashoffset: 0px;
+  animation: success__checkmark__1OE_m_0 0.25s ease-in-out 0.7s backwards;
+}
+.success__ui-component-success__kNBOV_0 .success__svg-success__3l2vx_0 circle {
+  stroke-dasharray: 76px, 76px;
+  stroke-dashoffset: 0px;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  animation: success__checkmark-circle__16QDJ_0 0.6s ease-in-out forwards;
+}
+@keyframes refresh__rotation__28CoQ_0 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(359deg);
+  }
+}
+.refresh__ui-component-refresh__2u1V6_0 {
+  position: relative;
+  display: inline-block;
+}
+.refresh__ui-component-refresh__2u1V6_0 .refresh__refresh-inner__ak2SO_0 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: refresh__rotation__28CoQ_0 1s infinite linear;
+  transform-origin: center center;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
+}
+.importButton__linkedin-search-people-import-container__EWaKo_0 {
+  position: relative;
+}
+.importButton__linkedin-search-people-import-container__EWaKo_0 .importButton__linkedin-search-people-import__1H-vT_0 {
+  position: absolute;
+  top: 10px;
+  right: 24px;
+}
+.importButton__linkedin-search-people-import-container__EWaKo_0 .importButton__linkedin-search-people-import-selected__2dpyD_0 {
+  font-size: 14px;
+  color: #454545;
+  line-height: 1;
+  margin-right: 14px;
+  vertical-align: middle;
+}
+.importButton__linkedin-search-people-import-container__EWaKo_0 .importButton__linkedin-search-people-import-selected__2dpyD_0 span {
+  font-weight: 700;
+}
+.importButton__linkedin-search-people-import-container__EWaKo_0 .importButton__linkedin-search-people-import-button__2AsBq_0 {
+  background: #ff6868;
+  border-radius: 2px;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 18px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  transition-duration: 167ms;
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  vertical-align: middle;
+  font-family: inherit;
+}
+.importButton__linkedin-search-people-import-container__EWaKo_0 .importButton__linkedin-search-people-import-button__2AsBq_0:hover {
+  background-color: #ec4a4c;
+}
+.itemSelect__linkedin-search-people-item-select__JLamY_0 {
+  margin-left: 32px !important;
+  margin-top: 20px !important;
+  width: 22px;
+  height: 22px;
+}
+.itemTag__linkedin-search-people-item-tag__2UzMD_0 {
+  border-radius: 2px;
+  font-size: 12px;
+  color: #fff;
+  width: 59px;
+  height: 20%;
+  line-height: 20px;
+  display: inline-block;
+  text-align: center;
+  margin-left: 14px;
+}
+.itemTag__linkedin-search-people-item-tag__2UzMD_0.itemTag__exist__1jcAg_0 {
+  background: #2ad2a2;
+}
+.itemTag__linkedin-search-people-item-tag__2UzMD_0.itemTag__forbidden__1mL0x_0 {
+  background: #fdbb3d;
+}
+.itemTag__linkedin-search-people-item-tag__2UzMD_0.itemTag__unregister__VKsWm_0 {
+  visibility: hidden;
+}

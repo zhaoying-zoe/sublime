@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="elem-id">234234234</div>
+</body>
+<script>
+    // 1. 某个需要被监控的 dom 元素。
+    const targetNode = document.getElementById('elem-id');
+
+    // 2. 配置 dom 的哪些改变会触发回调函数，详细见下文表格。
+    const mutationObserverInitConfig = { attributes: true, childList: true, subtree: true };
+
+    // 3. dom 变化时触发的回调函数，传入 mutationsList：记录 dom 变化的对象数组。
+    const callback = function(mutationsList) {
+        console.log(mutationsList);
+        for(let mutation of mutationsList) {
+            console.log( 'dom 变化啦！');
+            // youCoreFun();
+        }
+    };
+
+    // 4. 创建一个 MutationObserver 示例，传入回调函数
+    const observer = new MutationObserver(callback);
+
+    // 5. 注册监控的节点、监控的事件
+    observer.observe(targetNode, mutationObserverInitConfig);
+
+    // 6. 停止监控
+    // observer.disconnect();
+</script>
+</html>

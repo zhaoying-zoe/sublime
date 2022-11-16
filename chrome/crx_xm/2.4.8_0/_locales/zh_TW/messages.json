@@ -1,0 +1,86 @@
+{
+  "delivery": {
+    "description": "pop界面信息",
+    "message": "提高普郵送達率"
+  },
+  "exception": {
+    "description": "描述信息",
+    "message": "有異常"
+  },
+  "extName": {
+    "description": "擴展名稱",
+    "message": "小滿助手"
+  },
+  "goUpdate": {
+    "description": "pop界面信息",
+    "message": "前往更新"
+  },
+  "helpCenter": {
+    "description": "描述信息",
+    "message": "小滿幫助中心"
+  },
+  "hunter": {
+    "description": "pop界面信息",
+    "message": "郵箱獵手"
+  },
+  "lastHunter": {
+    "description": "描述信息",
+    "message": "最近壹次抓取:"
+  },
+  "lastSend": {
+    "description": "pop界面信息",
+    "message": "最近發送"
+  },
+  "login": {
+    "description": "描述信息",
+    "message": "登陸"
+  },
+  "loginResultTips": {
+    "description": "描述信息",
+    "message": "當前頁面抓取到$count$個有效郵箱，查看全部",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "notLogin": {
+    "description": "描述信息",
+    "message": "您未登陸"
+  },
+  "notLoginResultTips": {
+    "description": "描述信息",
+    "message": "當前頁面抓取到$count$個有效郵箱，登陸後查看全部",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "notLoginTips": {
+    "description": "描述信息",
+    "message": "登陸後，抓取結果會自動保存到聯繫人列表中"
+  },
+  "notRuning": {
+    "description": "描述信息",
+    "message": "未運行"
+  },
+  "proxy": {
+    "description": "pop界面信息",
+    "message": "系統加速"
+  },
+  "runing": {
+    "description": "描述信息",
+    "message": "運行中"
+  },
+  "showException": {
+    "description": "pop界面信息",
+    "message": "查看異常"
+  },
+  "updated": {
+    "description": "描述信息",
+    "message": "有更新"
+  }
+}

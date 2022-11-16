@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>info</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-4.6%" y="-3.6%" width="109.1%" height="107.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.18 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="C02_plugin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.26">
+        <g id="login" filter="url(#filter-1)" transform="translate(-83.000000, -352.000000)" fill-rule="nonzero" fill="#000000">
+            <g id="Group-2" transform="translate(14.000000, 361.000000)">
+                <g id="info" transform="translate(78.000000, 0.000000)">
+                    <path d="M6,11.9867919 C2.6990604,11.9867919 0.0132080537,9.30136913 0.0132080537,6 C0.0132080537,2.6990604 2.6990604,0.0132080537 6,0.0132080537 C9.30136913,0.0132080537 11.9867919,2.69863087 11.9867919,6 C11.9867919,9.30136913 9.30136913,11.9867919 6,11.9867919 Z M6,0.872268456 C3.17240268,0.872268456 0.872268456,3.17240268 0.872268456,6 C0.872268456,8.82716779 3.17240268,11.1277315 6,11.1277315 C8.82716779,11.1277315 11.1277315,8.82759732 11.1277315,6 C11.1277315,3.17240268 8.82716779,0.872268456 6,0.872268456 Z M5.3557047,3.20805369 C5.3557047,3.56388816 5.64416553,3.85234899 6,3.85234899 C6.35583447,3.85234899 6.6442953,3.56388816 6.6442953,3.20805369 C6.6442953,2.85221922 6.35583447,2.56375839 6,2.56375839 C5.64416553,2.56375839 5.3557047,2.85221922 5.3557047,3.20805369 Z M6,9.43624161 C5.76289933,9.43624161 5.5704698,9.24424161 5.5704698,9.00671141 L5.5704698,5.1409396 C5.5704698,4.90383893 5.76289933,4.7114094 6,4.7114094 C6.23710067,4.7114094 6.4295302,4.90383893 6.4295302,5.1409396 L6.4295302,9.00671141 C6.4295302,9.24424161 6.23710067,9.43624161 6,9.43624161 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

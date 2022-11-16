@@ -1,0 +1,86 @@
+{
+  "delivery": {
+    "description": "pop interface information",
+    "message": "Email Delivery"
+  },
+  "exception": {
+    "description": "description information",
+    "message": "Exception"
+  },
+  "extName": {
+    "description": "extension name",
+    "message": "Xiaoman Assistant"
+  },
+  "goUpdate": {
+    "description": "pop interface information",
+    "message": "Go to update"
+  },
+  "helpCenter": {
+    "description": "description information",
+    "message": "Xiaoman Help Center"
+  },
+  "hunter": {
+    "description": "pop interface information",
+    "message": "Email Hunter"
+  },
+  "lastHunter": {
+    "description": "description information",
+    "message": "Recently crawl:"
+  },
+  "lastSend": {
+    "description": "pop interface information",
+    "message": "Recently Sent"
+  },
+  "login": {
+    "description": "description information",
+    "message": "Login"
+  },
+  "loginResultTips": {
+    "description": "description information",
+    "message": "Grab a total of $count$ valid mailboxes, view all",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "notLogin": {
+    "description": "description information",
+    "message": "Not Login"
+  },
+  "notLoginResultTips": {
+    "description": "description information",
+    "message": "Catch a total of $count$ valid mailbox, see all after login",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "notLoginTips": {
+    "description": "description information",
+    "message": "After loggin in, the results are auto saved to the contact list"
+  },
+  "notRuning": {
+    "description": "description information",
+    "message": "Not Running"
+  },
+  "proxy": {
+    "description": "pop interface information",
+    "message": "System Proxy"
+  },
+  "runing": {
+    "description": "description information",
+    "message": "Running"
+  },
+  "showException": {
+    "description": "pop interface information",
+    "message": "View exception"
+  },
+  "updated": {
+    "description": "description information",
+    "message": "Update"
+  }
+}
