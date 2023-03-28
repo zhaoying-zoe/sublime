@@ -35173,7 +35173,7 @@
                                 for (; ;)
                                     switch ((t.prev = t.next)) {
                                         case 0:
-                                            if ((console.log('get current user ========='), e.reset(), !e.loading)) {
+                                            if ((console.log('get current user35176 ========='), e.reset(), !e.loading)) {
                                                 t.next = 4;
                                                 break;
                                             }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>筛选数据</title>
+</head>
+
+<body>
+</body>
+<script>
+	class StackArr {
+		constructor() {
+			this.number = 0;
+			this.stack = [];
+		}
+		push(item) {
+			this.stack.push(item)
+			this.number++;
+		}
+		pop() {
+			if (this.isEmpty()) return undefined;
+			const item = this.stack.pop();
+			this.number--;
+			return item;
+		}
+		isEmpty() {
+			return this.stack.length === 0;
+		}
+		peek() {
+			if (this.isEmpty()) return undefined;
+			return this.stack[this.number - 1];
+		}
+		clear() {
+			this.stack.length = 0;
+		}
+		size() {
+			return this.number;
+		}
+	}
+
+	const stack = new StackArr();
+	stack.push(0);
+	stack.push(1);
+	stack.push(2);
+	console.log(stack)
+	console.log(stack.size())
+	console.log(stack.peek())
+	console.log(stack.isEmpty())
+	// console.log(stack.clear())
+
+
+	class StackObj {
+		constructor() {
+			this.number = 0;
+			this.stack = {};
+		}
+		push(item) {
+			this.stack[this.number] = item;
+		}
+		pop() {
+			const item = this.stack[this.number - 1];
+			delete this.stack[this.number - 1];
+			return item;
+		}
+		peek() {
+			return this.stack[this.number - 1];
+		}
+		clear() {
+			this.stack = {};
+		}
+		isEmpty() {
+			return this.number === 0;
+		}
+	}
+
+	const stackObj = new StackObj();
+	stackObj.push(0);
+	console.log(stackObj);
+</script>
+
+</html>

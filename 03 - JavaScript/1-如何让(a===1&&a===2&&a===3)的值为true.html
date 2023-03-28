@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-如何让(a===1&&a===2&&a===3)的值为true</title>
+</head>
+
+<body>
+
+</body>
+<script>
+// 方法1
+const a = {
+    a: 1,
+    valueOf: function() {
+        return this.a++;
+    }
+}
+console.log(a==1 && a==2 && a==3);
+
+// 方法2
+let value = 1;
+Object.defineProperty(window, 'b', {
+    get() {
+        return value++;
+    },
+})
+console.log(b==1 && b==2 && b==3);
+</script>
+
+</html>

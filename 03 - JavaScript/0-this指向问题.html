@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input-box {
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+        position: relative;
+        border: 1px solid #000;
+        border-radius: 5px;
+        height: 40px;
+        min-width: 50px;
+        font-family: Arial, 'microsoft yahei';
+        font-size: 14px;
+    }
+
+    .input-box__label {
+        display: inline-block;
+        font-size: inherit;
+        line-height: normal;
+        visibility: hidden;
+        font-family: inherit;
+        padding: 0 10px;
+    }
+
+    .input-box__input {
+        box-sizing: border-box;
+        position: absolute;
+        display: inline;
+        font-size: inherit;
+        font-family: inherit;
+        line-height: normal;
+        border-radius: inherit;
+        height: 100%;
+        width: 100%;
+        outline: 0;
+        border: 0;
+        margin: 0;
+        padding: 0 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="input-box">
+        <label id="label" class="input-box__label"></label>
+        <input type="text" id="input" class="input-box__input" />
+    </div>
+</body>
+<script>
+document.querySelector('#input').addEventListener('input', (e) => {
+    document.querySelector('#label').innerHTML = e.target.value;
+})
+// var names = "zhangs";
+// var obj = {
+//     names: 1,
+//     run: function() {
+//         console.log("-===>", this.names); // 1
+//         return function(params) {
+//             console.log("*****", this.names);
+//         }
+//     }
+// }
+// obj.run();
+</script>
+
+</html>
