@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-js队列&&双端队列</title>
+</head>
+
+<body>
+</body>
+<script>
+    class Queue {
+        constructor() {
+            this.count = 0;
+            this.lowestCount = 0;
+            this.items = {};
+        }
+        enqueue(item) {
+            this.items[this.count] = item;
+            this.count++;
+        }
+        dequeue() {
+            if (this.isEmpty()) {
+                return undefined;
+            }
+            const result = this.items[this.lowestCount];
+            delete this.items[this.lowestCount];
+            this.lowestCount++;
+            return result;
+        }
+        peek() {
+            if (this.isEmpty()) {
+                return undefined;
+            }
+            return this.items[this.lowestCount];
+        }
+        size() {
+            return this.count - this.lowestCount;
+        }
+        clear() {
+            this.items = {};
+            this.lowestCount = 0;
+            this.count = 0;
+        }
+        isEmpty() {
+            return this.count === 0;
+        }
+        toString() {
+            if (this.isEmpty()) {
+                return '';
+            }
+            let objString = `${this.items[this.lowestCount]}`;
+            for (let i = this.lowestCount + 1; i < this.count; i++) {
+                objString = `${objString},${this.items[i]}`
+            }
+            return objString;
+        }
+    }
+
+    const stackObj = new Queue();
+    stackObj.enqueue(0);
+    stackObj.enqueue(1);
+    stackObj.enqueue(2);
+    // stackObj.dequeue();
+    console.log('stackObj.size()', stackObj.size());
+    console.log(stackObj);
+    console.log('stackObj.toString()', stackObj.toString());
+
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+
+    class Deque {
+        constructor() {
+            this.items = {};
+            this.count = 0;
+            this.lowestCount = 0;
+        }
+        // 双端队列向前端添加元素有三种情况
+        // 1. 队列中没有任何元素,可以调用addBack方法,直接在队列后面添加元素
+        // 2. 队列中有元素,并且 lowestCount 是大于或者等于0的,将 lowestCount 减1即可
+        // 3. 队列中有元素,但是 lowestCount = 0,可以用循环将前一项的值赋值给后一项
+        addFront(item) {
+            if (this.isEmpty()) {
+                this.addBack(item);
+            } else if (this.lowestCount > 0) {
+                this.lowestCount--;
+                this.items[this.lowestCount] = item;
+            } else {
+                for (let i = this.count; i > 0; i--) {
+                    this.items[i] = this.items[i - 1];
+                }
+                this.count++;
+                this.lowestCount = 0;
+                this.items[this.lowestCount] = item;
+            }
+            // console.log('this.items', this.items);
+        }
+        addBack(item) {
+            this.items[this.count] = item;
+            this.count++;
+        }
+        removeFront() {
+            if (this.isEmpty()) {
+                return undefined;
+            }
+            const removeItem = this.items[this.lowestCount];
+            delete this.items[this.lowestCount];
+            this.lowestCount++;
+            // console.log('this.lowestCount', this.lowestCount);
+            return removeItem;
+        }
+        removeBack() {
+            if (this.isEmpty()) {
+                return undefined;
+            }
+            const removeItem = this.items[this.count];
+            delete this.items[this.count];
+            return removeItem;
+        }
+        isEmpty() {
+            return this.count === 0;
+        }
+        clear() {
+            this.items = {};
+            this.count = 0;
+            this.lowestCount = 0;
+        }
+        size() {
+            return this.count;
+        }
+        toString() {
+            if (this.isEmpty()) {
+                return '';
+            }
+            let result = `${this.items[this.lowestCount]}`;
+            for (let i = this.lowestCount + 1; i < this.count; i++) {
+                result = `${result},${this.items[i]}`
+            }
+            return result;
+        }
+    }
+
+    let deque = new Deque();
+    deque.addFront(0);
+    deque.addFront(1);
+    deque.removeFront(0);
+    deque.addFront(2);
+    deque.addBack(4);
+    deque.addBack(5);
+    deque.addBack(6);
+    console.log('deque', deque)
+
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+    console.log('------------------------------')
+
+    // 队列的应用:击鼓传花
+    // 1. 首先接收两个参数(参与游戏的人和传递的次数)
+    // 2. 将参与游戏的人添加到队列中
+    // 3. 判断队列的大小
+    // 3.1 如果队列中的数据大于1,则需要持续进行游戏(将删除的)
+    function handleDrum(numbers, times) {
+        const queue = new Queue();
+        const disuseList = [];
+
+        for (let i = 0; i < numbers.length; i++) {
+            queue.enqueue(numbers[i]);
+        }
+
+        // console.log('queue', queue);
+
+        // 需要执行 members.length - 1 轮游戏
+        while (queue.size() > 1) {
+            // 每轮游戏传递 times 次
+            // 每次传递完成,将被淘汰的人添加到指定的数组中
+            for (let i = 0; i < times; i++) {
+                queue.enqueue(queue.dequeue());
+            }
+            // console.log('queue.size()', queue.size());
+            disuseList.push(queue.dequeue());
+        }
+
+        return {
+            disuseList,
+            winner: queue.peek()
+        }
+    }
+
+    const members = ['tom', 'john', 'bob', 'mike', 'jenny', 'jerry']
+    const result = handleDrum(members, 2);
+    console.log('result', result);
+
+
+    // 书中的内容:
+    // function hotPotato(elementsList, num) {
+    //     const queue = new Queue(); // {1} 
+    //     const elimitatedList = [];
+    //     for (let i = 0; i < elementsList.length; i++) {
+    //         queue.enqueue(elementsList[i]); // {2} 
+    //     }
+    //     while (queue.size() > 1) {
+    //         for (let i = 0; i < num; i++) {
+    //             queue.enqueue(queue.dequeue()); // {3} 
+    //         }
+    //         elimitatedList.push(queue.dequeue()); // {4} 
+    //     }
+    //     return {
+    //         eliminated: elimitatedList,
+    //         winner: queue.dequeue() // {5} 
+    //     };
+    // }
+
+    // const result1 = hotPotato(members, 90);
+    // console.log('result1', result1);
+</script>
+
+</html>

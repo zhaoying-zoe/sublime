@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>筛选数据</title>
+</head>
+
+<body>
+</body>
+<script>
+	class StackArr{
+		constructor() {
+			this.number = 0;
+			this.stack = [];
+		}
+		push(item) {
+			this.stack.push(item)
+			this.number++;
+		}
+		pop() {
+			if (this.isEmpty()) return undefined;
+			const item = this.stack.pop();
+			this.number--;
+			return item;
+		}
+		isEmpty() {
+			return this.stack.length === 0;
+		}
+		peek() {
+			if (this.isEmpty()) return undefined;
+			return this.stack[this.number - 1];
+		}
+		clear() {
+			this.stack.length = 0;
+		}
+		size() {
+			return this.number;
+		}
+		toString() {
+			if (this.isEmpty()) return '';
+			let stringStack = this.stack[0];
+			for (let i = 1;i < this.number;i++) {
+				stringStack = `${stringStack},${this.stack[i]}`
+			}
+			return stringStack;
+		}
+	}
+
+	const stack = new StackArr();
+	stack.push(0);
+	stack.push(1);
+	stack.push(2);
+	console.log(stack)
+	console.log(stack.size())
+	console.log(stack.peek())
+	console.log(stack.isEmpty())
+	console.log('stack.toString()', stack.toString())
+	// console.log(stack.clear())
+
+	console.log('------------------');
+	console.log('------------------');
+	console.log('------------------');
+	console.log('------------------');
+
+
+	class StackObj{
+		constructor() {
+			this.count = 0;
+			this.items = {};
+		}
+		push(item) {
+			this.items[this.count] = item;
+			this.count++;
+		}
+		pop() {
+			if (this.isEmpty()) return undefined;
+			this.count--;
+			const result = this.items[this.count];
+			delete this.items[this.count];
+			return result;
+		}
+		peek() {
+			if (this.isEmpty()) return undefined;
+			return this.items[this.count - 1];
+		}
+		isEmpty() {
+			return this.count === 0;
+		}
+		size() {
+			return this.count;
+		}
+		clear() {
+			this.items = {};
+			this.count = 0;
+		}
+		toString() {
+			if (this.isEmpty()) return '';
+			let objString = this.items[0];
+			for (let i = 1; i < this.count; i++) {
+				objString = `${objString},${this.items[i]}`;
+			}
+			return objString;
+		}
+	}
+
+	const stackObj = new StackObj();
+	stackObj.push(0);
+	stackObj.push(1);
+	stackObj.push(2);
+	// stackObj.dequeue();
+	console.log('stackObj.size()', stackObj.size());
+	console.log(stackObj);
+	console.log('stackObj.toString()', stackObj.toString());
+</script>
+
+</html>
