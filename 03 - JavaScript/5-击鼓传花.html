@@ -17,50 +17,47 @@
             this.lowestCount = 0;
             this.items = {};
         }
-        // 双端队列向前端添加元素有三种情况
-        // 情况1:队列中没有数据
-        // 情况2:队列中有数据,但是lowestcount大于0
-        // 情况2:队列中有数据,但是lowestcount等于0,采用倒叙循环
+        // 前面添加元素有三种情况
+        // 情况1:items中没有任何数据,直接调用从后面加就可以
+        // 情况2:items中有数据,但是this.lowestCount
+        // 情况3:items中没有任何数据,
         addFront(item) {
-            if (this.empty()) {
-                this.addBack(item)
+            if (this.isEmpty()) {
+                this.addBack(item);
             } else if (this.lowestCount > 0) {
-                this.lowestCount--;
                 this.items[this.lowestCount] = item;
+                this.lowestCount--;
             } else {
-                // 将前一项赋值给后一项
                 for (let i = this.count; i > 0; i--) {
                     this.items[i] = this.items[i - 1];
                 }
-                this.count++; // 需要加1,最大的count给后面要添加的元素用
-                this.lowestCount = 0; // 最小数量改为0
-                this.items[this.lowestCount] = item; // 第一项需要重新赋值
+                this.count++; // 每次都要加1
+                this.lowestCount = 0; // 每次都要重置为0
+                this.items[this.lowestCount] = item;
             }
-
         }
         addBack(item) {
             this.items[this.count] = item;
             this.count++;
         }
         removeFront() {
-            if (this.empty()) return undefined;
-            const result = this.items[this.lowestCount];
+            if (this.isEmpty()) return undefined;
+            const removeResult = this.items[this.lowestCount];
             delete this.items[this.lowestCount];
             this.lowestCount++;
-            return result;
+            return removeResult;
         }
         removeBack() {
-            if (this.empty()) return undefined;
+            if (this.isEmpty()) return undefined;
+            const removeResult = this.items[this.count - 1];
+            delete this.items[this.count - 1];
             this.count--;
-            const result = this.items[this.count];
-            delete this.items[this.count];
-            return result;
         }
-        empty() {
+        isEmpty() {
             return this.count === 0;
         }
         peek() {
-            if (this.empty()) return undefined;
+            if (this.isEmpty()) return undefined;
             return this.items[this.lowestCount];
         }
         size() {
@@ -72,11 +69,10 @@
             this.items = {};
         }
         toString() {
-            if (this.isEmpty()) {
-                return '';
-            }
-            let result = this.items[this.lowestCount];
-            for (let i = 1; i < this.count; i++) {
+            if (this.isEmpty()) return '';
+            let result = '';
+            // let result = `${this.items[this.lowestCount]}`;
+            for (let i = this.lowestCount; i < this.count; i++) {
                 result = `${result},${this.items[i]}`;
             }
             return result;
@@ -88,5 +84,6 @@
     deque.addFront('zob');
     deque.addFront('zoc');
     console.log('deque', deque);
+    console.log('deque.toString()', deque.toString());
 </script>
 </html>
