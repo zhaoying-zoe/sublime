@@ -19,8 +19,8 @@
         }
         // 前面添加元素有三种情况
         // 情况1:items中没有任何数据,直接调用从后面加就可以
-        // 情况2:items中有数据,但是this.lowestCount
-        // 情况3:items中没有任何数据,
+        // 情况2:items中有元素,并且 lowestCount 是大于0的,将 lowestCount 减1即可
+        // 情况3:items中有元素,但是 lowestCount = 0,可以用循环将前一项的值赋值给后一项
         addFront(item) {
             if (this.isEmpty()) {
                 this.addBack(item);
