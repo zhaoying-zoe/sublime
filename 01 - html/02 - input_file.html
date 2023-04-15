@@ -1,20 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <input id="upload_files" type="file" multiple="multiple" name="upload_files" @change="uploadFiles">
+    <input id="upload_files" type="file" name="upload_files" @change="uploadFiles">
     <div>
         <span><span>23423534 <img style="width: 12px;height: 12px;" src="../image/remark-edit.svg"> </span></span>
     </div>
 </body>
+<script src="./jquery-3.6.0.min.js"></script>
 <script>
-    document.querySelector('#upload_files').onchange = function(e) {
-        console.error(e.target.files);
+    // 选择图片文件
+    const input = document.querySelector('input[type="file"]');
+
+    // 方法一：上传文件到企微
+    document.querySelector('#upload_files').onchange = function (e) {
+        console.error(this.files);
+        const file = this.files[0];
+        // console.error('event.target', event.target);
+
+        // 准备发送请求的数据
+        const formData = new FormData();
+        formData.append('upfile', file);
+        formData.append('access_token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzMjAiLCJqdGkiOiI3NGFkMjI3M2NlZWM4Yjg1ODg4Yjk0MDljMGNkZTA2NTIyYjdiMzIzNzMxYjc4NDE4NDE2YWY1NDZkNDM0YjNiM2I5ODcwY2Y2Nzk3OGM0YiIsImlhdCI6MTY4MTExNDQyNS4wNDEzMzUsIm5iZiI6MTY4MTExNDQyNS4wNDEzMzgsImV4cCI6MTcxMjczNjgyNS4wMTA2MTgsInN1YiI6IjMzMiIsInNjb3BlcyI6W119.WaMxHNZRAx4uAvozH6_S6-FTh2yTBbsS2acK10DxoHSWLbZWUqL3eqJLu2ayzm6IIA_uGdeHKPtxMo2FJbxXqw6MBpVvDtgIQURdI-7NRt4jmP5eKwCdv04uFLwiPYYeWc1Tm18u4-CleSkV_ka-GTRVLJ9zZ2Wriqkff9nmQBQnAVWORNOAy8y1aGBnv0ZV2ECoO9jE2nkFfVhVesHYNwkMX2ncNL46ouJo_3QcEgiJNVngyyQjTA-i3vUdMVWpJ4MjHEbpNSfwFl_KecBVUGTSMmTlodOCdy4HxXpbsdtcRoqEmb4zhCHtEkC0Y8YEog-1rQRI1Py0UC5G0awnnfY2zICKoZenYCQPrEmIXieVOTjosFMyRyac537fpKxwniRSwWazgDJpBk_84DbIZX6M55527FTS51gGrBwYmTJno6dIMUvHBSXCEA7k1rDwjQOpODkQDu4i-m18F3Qar30pfNqDJ2aJ3bMTxav6epM33nkPyxb1vLGKbHArcKi7OOEb2KVJZyUvi_NmOM0Aj74N47Y0oWQNOq8S_2rVdVOVJ4AEb1wy2pXv1hW77QcK6EnjiH6wJnjBvO3V6naiNunxhOTGdjYiX30-vUkLY3T-9nG8zwduQHzTDtmmvWzbfdMGmQv-YTAzg7Z8YE1ZsyB19uJhoivaGVtKItBqckI');
+
+        // 使用原生js发送ajax
+        // 创建XMLHttpRequest对象
+        // var xhr = new XMLHttpRequest();
+
+        // // 设置请求方法、URL和是否异步
+        // xhr.open('POST', 'https://superqvapi.zshud.com/upload', true);
+
+        // // 监听请求状态变化事件
+        // xhr.onreadystatechange = function () {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         // 请求完成且响应成功，可以处理响应数据了
+        //         console.log(xhr.responseText);
+        //     }
+        // };
+
+        // console.error('xhr.upload', xhr.upload);
+
+        // // 发送请求
+        // xhr.send(formData);
+
+        // ------------------------------分界线-------------------------------------------
+
+        // 使用jq发送ajax
+        // // 创建一个FormData对象
+        // var formData = new FormData();
+
+        // // 这里的fileInput是一个input[type="file"]元素
+        // formData.append("upfile", file);
+        // formData.append("access_token", 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzMjAiLCJqdGkiOiI3NGFkMjI3M2NlZWM4Yjg1ODg4Yjk0MDljMGNkZTA2NTIyYjdiMzIzNzMxYjc4NDE4NDE2YWY1NDZkNDM0YjNiM2I5ODcwY2Y2Nzk3OGM0YiIsImlhdCI6MTY4MTExNDQyNS4wNDEzMzUsIm5iZiI6MTY4MTExNDQyNS4wNDEzMzgsImV4cCI6MTcxMjczNjgyNS4wMTA2MTgsInN1YiI6IjMzMiIsInNjb3BlcyI6W119.WaMxHNZRAx4uAvozH6_S6-FTh2yTBbsS2acK10DxoHSWLbZWUqL3eqJLu2ayzm6IIA_uGdeHKPtxMo2FJbxXqw6MBpVvDtgIQURdI-7NRt4jmP5eKwCdv04uFLwiPYYeWc1Tm18u4-CleSkV_ka-GTRVLJ9zZ2Wriqkff9nmQBQnAVWORNOAy8y1aGBnv0ZV2ECoO9jE2nkFfVhVesHYNwkMX2ncNL46ouJo_3QcEgiJNVngyyQjTA-i3vUdMVWpJ4MjHEbpNSfwFl_KecBVUGTSMmTlodOCdy4HxXpbsdtcRoqEmb4zhCHtEkC0Y8YEog-1rQRI1Py0UC5G0awnnfY2zICKoZenYCQPrEmIXieVOTjosFMyRyac537fpKxwniRSwWazgDJpBk_84DbIZX6M55527FTS51gGrBwYmTJno6dIMUvHBSXCEA7k1rDwjQOpODkQDu4i-m18F3Qar30pfNqDJ2aJ3bMTxav6epM33nkPyxb1vLGKbHArcKi7OOEb2KVJZyUvi_NmOM0Aj74N47Y0oWQNOq8S_2rVdVOVJ4AEb1wy2pXv1hW77QcK6EnjiH6wJnjBvO3V6naiNunxhOTGdjYiX30-vUkLY3T-9nG8zwduQHzTDtmmvWzbfdMGmQv-YTAzg7Z8YE1ZsyB19uJhoivaGVtKItBqckI');
+
+        // console.error('formData', formData);
+
+        // // 发送ajax请求
+        // $.ajax({
+        //     url: "https://superqvapi.zshud.com/upload",
+        //     type: "POST",
+        //     data: formData,
+        //     headers: {
+        //         accept: 'application/json, text/plain, */*'
+        //     },
+        //     processData: false,
+        //     contentType: false,
+        //     success: function (response) {
+        //         console.log(response);
+        //     },
+        //     error: function (xhr, status, error) {
+        //         console.log("Error: " + error.message);
+        //     }
+        // });
+
+        // ------------------------------分界线-------------------------------------------
+        // 该方法会跨域
+        // $.ajax({
+        //     url: 'https://superqvapi.zshud.com/upload',
+        //     type: 'POST',
+        //     data: formData,
+        //     processData: false,
+        //     contentType: false,
+
+        //     xhr: function () {
+        //         var xhr = $.ajaxSettings.xhr();
+
+        //         xhr.upload.onprogress = function (e) {
+        //             console.error('e', e);
+        //             // if (e.lengthComputable) {
+        //             //     var percentComplete = (e.loaded / e.total) * 100;
+        //             //     $('.progress').show();
+        //             //     $('.progress-bar').css({ width: percentComplete + '%' });
+        //             //     $('.progress-bar').text(percentComplete.toFixed(2) + '%');
+        //             // }
+        //         };
+
+        //         return xhr;
+        //     },
+
+        //     success: function (response) {
+        //         alert('File uploaded successfully');
+        //     }
+        // });
     }
 </script>
+
 </html>

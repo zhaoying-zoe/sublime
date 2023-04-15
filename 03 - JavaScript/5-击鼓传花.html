@@ -11,7 +11,7 @@
 </body>
 <script>
     // 击鼓传花
-    class Deque {
+    class Queue {
         constructor() {
             this.count = 0;
             this.lowestCount = 0;
@@ -79,11 +79,22 @@
         }
     }
 
-    const deque = new Deque();
+    const deque = new Queue();
     deque.addFront('zoa');
     deque.addFront('zob');
     deque.addFront('zoc');
     console.log('deque', deque);
     console.log('deque.toString()', deque.toString());
+
+    // 击鼓传花应用
+    function handleDeque(arr, times) {
+        const deque = new Queue();
+        const resultList = [];
+        while(Array.isArray(arr) && arr.length) {
+            for (let i = 0; i < arr.length; i++) {
+                deque.addFront(arr[i]);
+            }
+        }
+    }
 </script>
 </html>
