@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-栈的应用-10进制转2进制.html</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Stack {
+        constructor() {
+            this.count = 0;
+            this.items = [];
+        }
+        push(item) {
+            this.count++;
+            this.items.push(item);
+        }
+        pop() {
+            if (this.isEmpty()) return undefined;
+            this.count--;
+            const result = this.items[this.count];
+            return result;
+        }
+        isEmpty() {
+            return this.count === 0;
+        }
+        size() {
+            return this.count;
+        }
+        peek() {
+            if (this.isEmpty()) return undefined;
+            return this.items[this.count - 1];
+        }
+        clear() {
+            this.items.length = 0;
+        }
+        toString() {
+            if (this.isEmpty()) return '';
+            let result = '';
+            for (let i = 0; i < this.count; i++) {
+                result += this.items[i];
+            }
+            return result;
+        }
+    }
+
+    function decimalToBinary(decNumber) {
+        const stack = new Stack();
+
+        while(decNumber > 0) {
+            stack.push(decNumber % 2);
+            decNumber = Math.floor(decNumber / 2);
+        }
+
+        let result = '';
+        while(!stack.isEmpty()) {
+            result += stack.pop();
+        }
+
+        return result;
+    }
+
+    const result = decimalToBinary(100);
+    console.log('result', result);
+</script>
+
+</html>

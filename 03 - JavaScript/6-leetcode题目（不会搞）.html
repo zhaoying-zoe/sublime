@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var mergeAlternately = function (word1, word2) {
+        const word1Arr = word1.split('');
+        const word2Arr = word2.split('');
+        const word1ArrLength = word1Arr.length;
+        const word2ArrLength = word2Arr.length;
+
+        let result = '';
+        if (word1ArrLength > word2ArrLength) {
+            for (let i = 0; i < word2ArrLength; i++) {
+                result += `${word1Arr[i]}${word2Arr[i]}`
+            }
+            const word1Arr2 = word1Arr.splice(word1ArrLength - word2ArrLength);
+            for (let i = 0; i < word1Arr2.length; i++) {
+                result += `${word1Arr2[i]}`
+            }
+        } else if (word1ArrLength < word2ArrLength) {
+            for (let i = 0; i < word1ArrLength; i++) {
+                result += `${word1Arr[i]}${word2Arr[i]}`
+            }
+            const word2Arr2 = word2Arr.splice(word2ArrLength - word1ArrLength);
+            for (let i = 0; i < word2Arr2.length; i++) {
+                result += `${word2Arr2[i]}`
+            }
+        } else {
+            for (let i = 0; i < word1ArrLength; i++) {
+                result += `${word1Arr[i]}${word2Arr[i]}`
+            }
+        }
+
+        return result;
+    };
+
+    const word1 = "abc";
+    const word2 = "xyzdef";
+    const result = mergeAlternately(word1, word2);
+    console.log('result', result);
+</script>
+
+</html>

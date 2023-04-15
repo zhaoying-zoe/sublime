@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-栈结构的实现</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Stack{
+        constructor() {
+            this.count = 0;
+            this.items = [];
+        }
+        push(item) {
+            this.count++;
+            this.items.push(item);
+        }
+        pop() {
+            if (this.isEmpty()) return undefined;
+            this.count--;
+            const result = this.items[this.count];
+            return result;
+        }
+        isEmpty() {
+            return this.count === 0;
+        }
+        size() {
+            return this.count;
+        }
+        peek() {
+            if (this.isEmpty()) return undefined;
+            return this.items[this.count - 1];
+        }
+        toString() {
+            if (this.isEmpty()) return '';
+            let result = '';
+            for (let i = 0; i < this.count; i++) {
+                result += this.items[i];
+            }
+            return result;
+        }
+    }
+
+    const stack = new Stack();
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    stack.push(4)
+    console.log(stack.size())
+    console.log(stack.peek())
+    console.log(stack.pop())
+    console.log(stack.toString())
+</script>
+
+</html>

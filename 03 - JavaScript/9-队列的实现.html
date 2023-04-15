@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-队列的实现.html</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Queue {
+        constructor() {
+            this.lowestCount = 0;
+            this.count = 0;
+            this.items = {};
+        }
+        enQueue(item) {
+            this.items[this.count] = item;
+            this.count++;
+        }
+        delQueue() {
+            if (this.isEmpty()) return undefined;
+            const delItem = this.items[this.lowestCount];
+            delete this.items[this.lowestCount];
+            this.lowestCount++;
+            return delItem;
+        }
+        peek() {
+            if (this.isEmpty()) return undefined;
+            return this.items[this.lowestCount];
+        }
+        clear() {
+            this.lowestCount = 0;
+            this.count = 0;
+            this.items = {};
+        }
+        size() {
+            return this.count - this.lowestCount;
+        }
+        isEmpty() {
+            return this.count === 0;
+        }
+        toString() {
+            if (this.isEmpty()) return '';
+            let result = this.items[this.lowestCount];
+            for (let i = this.lowestCount + 1; i < this.count; i++) {
+                result = `${result},${this.items[i]}`;
+            }
+            return result;
+        }
+    }
+
+    const queue = new Queue();
+    queue.enQueue(1);
+    queue.enQueue(2);
+    queue.enQueue(3);
+    queue.enQueue(4);
+    console.log('queue', queue);
+    queue.delQueue();
+    console.log('queue', queue);
+    console.log('queue.size()', queue.size());
+    console.log('queue.peek()', queue.peek());
+    console.log('queue.toString()', queue.toString());
+</script>
+
+</html>
