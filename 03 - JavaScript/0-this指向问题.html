@@ -7,42 +7,42 @@
     <title>Document</title>
     <style>
         .input-box {
-        display: inline-flex;
-        align-items: center;
-        box-sizing: border-box;
-        position: relative;
-        border: 1px solid #000;
-        border-radius: 5px;
-        height: 40px;
-        min-width: 50px;
-        font-family: Arial, 'microsoft yahei';
-        font-size: 14px;
-    }
+            display: inline-flex;
+            align-items: center;
+            box-sizing: border-box;
+            position: relative;
+            border: 1px solid #000;
+            border-radius: 5px;
+            height: 40px;
+            min-width: 50px;
+            font-family: Arial, 'microsoft yahei';
+            font-size: 14px;
+        }
 
-    .input-box__label {
-        display: inline-block;
-        font-size: inherit;
-        line-height: normal;
-        visibility: hidden;
-        font-family: inherit;
-        padding: 0 10px;
-    }
+        .input-box__label {
+            display: inline-block;
+            font-size: inherit;
+            line-height: normal;
+            visibility: hidden;
+            font-family: inherit;
+            padding: 0 10px;
+        }
 
-    .input-box__input {
-        box-sizing: border-box;
-        position: absolute;
-        display: inline;
-        font-size: inherit;
-        font-family: inherit;
-        line-height: normal;
-        border-radius: inherit;
-        height: 100%;
-        width: 100%;
-        outline: 0;
-        border: 0;
-        margin: 0;
-        padding: 0 10px;
-    }
+        .input-box__input {
+            box-sizing: border-box;
+            position: absolute;
+            display: inline;
+            font-size: inherit;
+            font-family: inherit;
+            line-height: normal;
+            border-radius: inherit;
+            height: 100%;
+            width: 100%;
+            outline: 0;
+            border: 0;
+            margin: 0;
+            padding: 0 10px;
+        }
     </style>
 </head>
 
@@ -56,17 +56,88 @@
 document.querySelector('#input').addEventListener('input', (e) => {
     document.querySelector('#label').innerHTML = e.target.value;
 })
-// var names = "zhangs";
-// var obj = {
-//     names: 1,
-//     run: function() {
-//         console.log("-===>", this.names); // 1
-//         return function(params) {
-//             console.log("*****", this.names);
-//         }
-//     }
-// }
-// obj.run();
+
+var names = "zhangs";
+var obj = {
+    names: 1,
+    run: function() {
+        console.log("-===>", this.names); // 1
+        return function(params) {
+            console.log("*****", this.names);
+        }
+    }
+}
+obj.run(); // 执行这个时:this指向obj
+obj.run()(); // 执行这个时:this指向window
+
+console.log('---------------------');
+
+// 类型1: 虽然将函数赋值给了fn1,但是函数与之前的方法并无关联,此时fn1的this指向window
+var obj1 = {
+    name: 'tom',
+    showName: function() {
+        console.log(this);
+        console.log(this.name);
+    }
+}
+
+var fn1 = obj1.showName;
+fn1();
+
+console.log('---------------------');
+
+// 类型2: forEach函数中的匿名函数使用了function关键字定义,所以他的this指向window
+// 如何修改: 1. 可以改为使用箭头函数 2. 在外部储存一个this
+const person = {
+    name: 'Alice',
+    friends: ['Bob', 'Charlie'],
+    listFriends() {
+        this.friends.forEach(function(friend) {
+            console.log(`${friend} is friends with ${this.name}.`);
+        });
+    }
+};
+
+person.listFriends();
+
+console.log('---------------------');
+
+// 类型3: 和类型2差不多一个意思
+function Person(name) {
+    this.name = name;
+    setTimeout(function() {
+        console.log(this.name);
+    }, 1000);
+}
+
+const person = new Person('John');
+
+// 类型4: 和类型2差不多一个意思
+const obj = {
+    num: 10,
+    increment() {
+        const incrementFunction = function() {
+            this.num++;
+        }
+        incrementFunction();
+        return this.num;
+    }
+}
+
+console.log(obj.increment());
+
+console.log('---------------------');
+
+// 类型5: 
+function sumValues(a, b) {
+    return a + b;
+}
+
+const numbers = [1, 2];
+console.log(sumValues.apply(null, numbers)); // apply第一个参数传null的话,函数的this指向window
+
+console.log('---------------------');
+
 </script>
 
 </html>
