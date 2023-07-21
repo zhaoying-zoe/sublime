@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>014-promise原理.html</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Promise0 {
+        // 定义一个数组,用来储存回调函数
+        callbackList = [];
+        constructor(fn) {
+            fn(this._resolve.bind(this));
+        }
+        // 执行 then 方法后,将回调函数 push 到数组中
+        then(onFulfilled) {
+            this.callbackList.push(onFulfilled);
+            return this; // 看这里
+        }
+        _resolve(value) {
+            this.callbackList.forEach(fn => fn(value));
+        }
+    }
+    let p = new Promise0(resolve => {
+        setTimeout(() => {
+            console.log('done');
+            resolve('5秒');
+        }, 5000);
+    }).then((data) => {
+        console.log(data)
+    });
+</script>
+
+</html>
