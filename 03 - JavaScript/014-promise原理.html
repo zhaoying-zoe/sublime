@@ -35,6 +35,30 @@
     }).then((data) => {
         console.log(data)
     });
+
+    // console.log(import('./13-js.js'));
+
+
+    async function a() {
+        const b = await checkJumpParams();
+        console.error('b', b);
+    }
+
+    a();
+
+
+
+    function checkJumpParams() {
+        return new Promise(resolve => {
+            resolve(true);
+        // }).then(res => {
+        //     console.error('res', res);
+        //     // 如果之前的 promise 已经执行成功, 则不需要向下继续执行了, 退出流程
+        //     if (res) {
+        //         return true;
+        //     }
+        });
+    }
 </script>
 
 </html>

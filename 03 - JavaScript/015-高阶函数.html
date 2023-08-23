@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>015-高阶函数.html</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function highFn(func, x, y) {
+        return func(x, y);
+    }
+
+    function addCalc(x, y) {
+        return x + y;
+    }
+
+    // console.error(highFn(addCalc, 2, 3));
+
+    function compose(...fns) {
+        return function(x) {
+            return fns.reduceRight((v, fn) => {
+                console.error('v', v);
+                console.error('fn', fn);
+                fn(v), x
+            });
+        };
+    }
+
+    function multiplyByTwo(x) {
+        return x * 2;
+    }
+
+    function addThree(x) {
+        return x + 3;
+    }
+
+    function subtractTen(x) {
+        return x - 10;
+    }
+
+    const combinedFunction = compose(subtractTen, addThree, multiplyByTwo);
+
+    console.log(combinedFunction(5)); // 输出: 3
+
+    // 从左到右执行: (5 * 2) + 3 - 10 = 3
+
+
+    var x = 2;
+    [(x) => x + 2, (x) => x * 3].reduceRight((accumulator, currentValue) => currentValue(accumulator), x);
+
+</script>
+</html>

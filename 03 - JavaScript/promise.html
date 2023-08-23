@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+    <head>
+        <meta charset=utf-8>
+        <meta http-equiv=X-UA-Compatible content="IE=edge">
+        <title>promise</title>
+    </head>
+    <body>
+
+    </body>
+    <script>
+        // function promise1() {
+        //     return new Promise(resolve => {
+        //         resolve(true);
+        //         console.error('1');
+        //         resolve(false);
+        //         console.error('2');
+        //     });
+        // }
+
+        // async function checkJumpParams1() {
+        //     const res = await promise1();
+        //     console.error('res', res) // 只会返回第一次resolve的结果: true
+        // }
+
+        // checkJumpParams1();
+
+        // console.error('------------------------------')
+
+
+        function promise2() {
+            return new Promise(resolve => {
+                resolve(true);
+                console.error('1');
+            }).then(res => {
+                console.error('2');
+
+                if (res) {
+                    return false;
+                }
+
+                console.error('3');
+
+                return new Promise(resolve => {
+                    resolve(res);
+                })
+            });
+        }
+
+        async function checkJumpParams2() {
+            const res = await promise2();
+            console.error('res', res) // 返回return的结果 (true => true;  false => false; 空 => undefined)
+        }
+
+        checkJumpParams2();
+
+        console.error('------------------------------');
+
+        // function promise3() {
+        //     return new Promise(resolve => {
+        //         console.error('1');
+        //         getName();
+        //         resolve(true);
+        //         console.error('2');
+        //     });
+        // }
+
+        // async function checkJumpParams3() {
+        //     const res = await promise3();
+        //     console.error('res', res) // 不受影响
+        // }
+
+        // checkJumpParams3();
+
+        // function getName() {
+        //     return;
+        // }
+    </script>
+</html>
