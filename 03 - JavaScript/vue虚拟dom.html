@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue虚拟dom</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Vnode {
+        // 标签名字,传递的属性,子节点
+        constructor(tag, props, children) {
+            this.tag = tag;
+            this.props = props;
+            this.children = children;
+
+            // 执行init初始化
+            this.init();
+        }
+        init() {
+            if (props.key) {
+                this.key = props.key;
+            }
+            this.setCount();
+        }
+        setCount() {
+            this.children
+        }
+    }
+</script>
+</html>
