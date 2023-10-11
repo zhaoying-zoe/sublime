@@ -1,40 +1,110 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <div>{{ msg }}</div>
+    <div>computed 无法传参: {{ computMsg }}</div>
+    <div>watch 的使用: 
+      <div>
+        {{ valueData }}
+        <button @click="chageValue">修改普通值</button>
+      </div>
+      <div>
+        {{ valueObj }}
+        <button @click="chageValueObj">修改对象值</button>
+      </div>
+      <div>
+        {{ valueArr }}
+        <button @click="chageValueArr">修改数组值</button>
+      </div>
+    </div>
+
+    <!-- 插槽的使用 -->
+    <div>插槽的使用 --------------------------------------------------------------- 插槽的使用</div>
+    <useSlot>
+      <!-- <p>父组件匿名插槽</p>
+      <p>父组件匿名插槽</p>
+      <p>父组件匿名插槽</p>
+      <p>父组件匿名插槽</p>
+      <p>父组件匿名插槽</p> -->
+
+      <!-- <slot name="header">
+        父组件具名插槽header
+      </slot> -->
+
+      <!-- 匿名作用域插槽 -->
+      <template v-slot:default="slotProps">
+        子组件传递的数据: {{ slotProps }}
+      </template>
+      <!-- 具名作用域插槽 -->
+      <template v-slot:age="slotProps">
+        子组件传递的数据: {{ slotProps }}
+      </template>
+    </useSlot>
   </div>
 </template>
 
 <script>
+import useSlot from './useSlot.vue';
+
 export default {
   name: 'HelloWorld',
+  components: {
+    useSlot
+  },
+  data() {
+    return {
+      valueData: 'use valueData',
+      valueObj: {
+        name: 'tom'
+      },
+      valueArr: [1, 2, 3, {name: 'tom'}]
+    };
+  },
   props: {
-    msg: String
+    msg: String,
+  },
+  methods: {
+    chageValue() {
+      this.valueData = this.valueData + Math.ceil(Math.random() * 10);
+    },
+    chageValueObj() {
+      this.valueObj.name = this.valueObj.name + Math.ceil(Math.random() * 10);
+    },
+    chageValueArr() {
+      // this.valueArr.push(Math.ceil(Math.random() * 10));
+      this.valueArr[3].name = Math.ceil(Math.random() * 10);
+    }
+  },
+  computed: {
+    computMsg() {
+      return 'use computMsg';
+    },
+    computedMethod() {
+      console.error('computedMethod' + this.valueData);
+      return 'computedMethod' + this.valueData;
+    }
+  },
+  watch: {
+    valueData: {
+      handler(newVal, old) {
+        console.error('valueData', newVal, old);
+      },
+      // immediate: true,
+      deep: true
+    },
+    valueObj: {
+      handler(newVal, old) {
+        console.error('valueObj', newVal, old);
+      },
+      // immediate: true,
+      deep: true
+    },
+    valueArr: {
+      handler(newVal, old) {
+        console.error('valueArr', newVal, old);
+      },
+      // immediate: true,
+      deep: true
+    },
   }
 }
 </script>
