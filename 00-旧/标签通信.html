@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" id="btn" value="按钮">
+</body>
+<script type="text/javascript">
+	const oBtn = document.getElementById('btn');
+	localStorage.setItem('lastname', 'Smith');
+	oBtn.addEventListener('click', function(event){
+		console.log(localStorage)
+		console.log('set storage');
+	},false);
+	window.addEventListener('storage', function(event){
+		console.log('add storage');
+	},false);
+</script>
+</html>

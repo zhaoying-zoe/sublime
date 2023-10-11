@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">按钮</button>
+</body>
+<script>
+	const btn = document.getElementById('btn');
+
+    const options = {
+	    body: '4654654654654465',
+	    icon: './xpylogo.png'
+    };
+
+    if (Notification.permission === 'default') {
+	    console.error(Notification.permission);
+	    // 提示用户是否打开通知权限
+        Notification.requestPermission(function (permission) {
+            // If the user accepts, let's create a notification
+            if (permission === "granted") {
+                var notification = new Notification("Hi there!");
+            }
+        });
+    };
+
+
+    btn.onclick = function() {
+	    // console.error(options);
+	    console.error(Notification.permission);
+    	new Notification('这里是标题', options);
+    };
+
+</script>
+</html>

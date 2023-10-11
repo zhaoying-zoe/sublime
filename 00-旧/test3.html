@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn">
+</body>
+<script>
+	(function(w) {
+    w.onload = function() {
+        document.getElementById('btn').onclick = function() {
+            // console.log(223333);
+            const xhr = new XMLHttpRequest();
+            // const url = 'https://qcejmx.api.cloudendpoint.cn/hello';
+            const url = 'http://127.0.0.1:3000';
+            // 建立连接
+            xhr.open("GET", url, true);
+            // 发送请求
+            xhr.send();
+            // 处理响应
+            xhr.onreadystatechange = function() {
+                // console.error(xhr.readyState);
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const data = xhr.responseText;
+                        const jsonToObj = JSON.parse(data);// 字符串 转 对象
+                        console.log(data);
+                        console.log(jsonToObj);
+                    };
+                }
+            }
+            // console.log(xhr);
+        };
+    }
+})(window);
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	class Person {
+		constructor(name, age) {
+			this.name = name;
+			this.age = age;
+		}
+		sayHello() {
+			console.log( 'my name is ' + this.name);
+		}
+		sayAge() {
+			console.log('my age is ' + this.age);
+		}
+		static sayGoodbye() {
+			console.log('sayGoodbye');
+		}
+	}
+	Person.sayGoodbye();
+	const p1 = new Person('tom', 18);
+	p1.sayHello();
+	p1.sayAge();
+	class Student extends Person {
+		constructor(name, age, sex) {
+			super(name, age);
+			this.sex = sex;
+		}
+	}
+</script>
+</html>
