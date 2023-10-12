@@ -39,6 +39,13 @@
         子组件传递的数据: {{ slotProps }}
       </template>
     </useSlot>
+
+    <!-- 过滤器的使用 -->
+    <div>
+      过滤器的使用：
+      <div>金钱：{{ 100 | filterMoney }}</div>
+      <div>时间过滤：{{ 1697035483418 | filterTime }}</div>
+    </div>
   </div>
 </template>
 
@@ -82,6 +89,17 @@ export default {
       console.error('computedMethod' + this.valueData);
       return 'computedMethod' + this.valueData;
     }
+  },
+  filters: {
+    filterMoney(val) {
+      return '￥' + val;
+    },
+    filterTime(val) {
+      const year = new Date(val).getFullYear() 
+      const month = new Date(val).getMonth() 
+      const date = new Date(val).getDate() 
+      return `${year}-${month + 1}-${date}`;
+    },
   },
   watch: {
     valueData: {
