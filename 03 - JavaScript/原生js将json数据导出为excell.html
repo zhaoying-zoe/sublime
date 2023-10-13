@@ -13,21 +13,33 @@
     <script>
         // 要导出的json数据
         const jsonData = [];
+        console.error('a', a);
+        console.error('b', b);
 
-        // console.error(a, b);
-        b.forEach(item1 => {
-            a.forEach(item2 => {
-                if (item1.lncRNA_start_Y1 <= item2.lncRNA_start_X1 <= item1.lncRNA_end_Y2 <= item2.lncRNA_end_X2) {
-                    jsonData.push(item1);
-                }
+        const filteredData = b.filter(item1 => {
+            return a.some(item2 => {
+                return Number(item1.lncRNA_start_Y1) <= Number(item2.lncRNA_start_X1) && 
+                    Number(item2.lncRNA_start_X1) <= Number(item1.lncRNA_end_Y2) && 
+                    Number(item1.lncRNA_end_Y2) <= Number(item2.lncRNA_end_X2);
             });
         });
+
+        // const cc = bb.filter(item1 => {
+        //     return aa.some(item2 => {
+        //         return item1.y1 <= item2.x1 && 
+        //                 item2.x1 <= item1.y2 && 
+        //                 item1.y2 <= item2.x2;
+        //     });
+        // });
+
+
+        jsonData.push(...filteredData);
 
         console.error(jsonData);
 
         const tableToExcel = () => {
             // 列标题
-            let str = "<tr><td>姓名</td><td>电话</td><td>邮箱</td></tr>";
+            let str = "<tr><td>lncRNA_chr</td><td>lncRNA_start_Y1</td><td>lncRNA_end_Y2</td></tr>";
             // 循环遍历，每行加入tr标签，每个单元格加td标签
             for (let i = 0; i < jsonData.length; i++) {
                 str += "<tr>";
