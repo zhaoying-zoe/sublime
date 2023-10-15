@@ -4,42 +4,83 @@
     <p style="font-size: 20px; color: red">
         使用table标签方式将json导出xls文件
     </p>
-    <button onclick="tableToExcel()">导出</button>
+    <button onclick="tableToExcel()">导出1</button>
+    <button onclick="tableToExcel2()">导出2</button>
 </head>
 
 <body>
     <script src="./a.js"></script>
     <script src="./b.js"></script>
     <script>
+        const arr = [
+            'lncRNA_chr',
+            'lncRNA_start_Y1',
+            'lncRNA_end_Y2',
+            'Overlap_class',
+            'lncRNA',
+            'mRNA',
+            'lncRNA_length',
+            'lncRNA_chain',
+            'mRNA_chr',
+            'mRNA_start',
+            'mRNA_end',
+            'mRNA_length',
+            'mRNA_chain',
+            'minimum_free_energy_of_RNAplex',
+            'Pearson_correlation',
+            'Spearman_correlation',
+            'Gi_17_10d-FPKM_lncRNA',
+            'Gi_17_1d-FPKM_lncRNA',
+            'Gi_17_3d-FPKM_lncRNA',
+            'Gi_0-FPKM_lncRNA',
+            'Gi_17_15d-FPKM_lncRNA',
+            'Gi_17_10d-FPKM_mRNA',
+            'Gi_17_1d-FPKM_mRNA',
+            'Gi_17_3d-FPKM_mRNA',
+            'Gi_0-FPKM_mRNA',
+            'Gi_17_15d-FPKM_mRNA',
+            '染色体',
+            'lncRNA_start_X1',
+            'lncRNA_end_X2'
+        ]
+
         // 要导出的json数据
         const jsonData = [];
-        console.error('a', a);
-        console.error('b', b);
+        const jsonData2 = [];
 
         const filteredData = b.filter(item1 => {
             return a.some(item2 => {
                 return Number(item1.lncRNA_start_Y1) <= Number(item2.lncRNA_start_X1) && 
                     Number(item2.lncRNA_start_X1) <= Number(item1.lncRNA_end_Y2) && 
-                    Number(item1.lncRNA_end_Y2) <= Number(item2.lncRNA_end_X2);
+                    Number(item1.lncRNA_end_Y2) <= Number(item2.lncRNA_end_X2) && Object.assign(item1, item2);
+            });
+        });
+        
+        const filteredData2 = b.filter(item1 => {
+            return a.some(item2 => {
+                return Number(item2.lncRNA_start_X1) <= Number(item1.lncRNA_start_Y1) && 
+                    Number(item1.lncRNA_start_Y1) <= Number(item2.lncRNA_end_X2) && 
+                    Number(item2.lncRNA_end_X2) <= Number(item1.lncRNA_end_Y2) && Object.assign(item1, item2);
             });
         });
 
-        // const cc = bb.filter(item1 => {
-        //     return aa.some(item2 => {
-        //         return item1.y1 <= item2.x1 && 
-        //                 item2.x1 <= item1.y2 && 
-        //                 item1.y2 <= item2.x2;
-        //     });
-        // });
-
+        console.error('a', a);
+        console.error('b', b);
+        console.error('filteredData', filteredData);
+        console.error('filteredData2', filteredData2);
 
         jsonData.push(...filteredData);
+        jsonData2.push(...filteredData2);
 
-        console.error(jsonData);
+        // 输出base64编码
+        const base64 = (s) => window.btoa(unescape(encodeURIComponent(s)));
 
         const tableToExcel = () => {
             // 列标题
-            let str = "<tr><td>lncRNA_chr</td><td>lncRNA_start_Y1</td><td>lncRNA_end_Y2</td></tr>";
+            let str = `<tr>
+                ${arr.map(item => `<td>${item}</td>`).join('')}
+            </tr>`;
+
             // 循环遍历，每行加入tr标签，每个单元格加td标签
             for (let i = 0; i < jsonData.length; i++) {
                 str += "<tr>";
@@ -63,11 +104,62 @@
                 </x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
                 </head><body><table>${str}</table></body></html>`;
             // 下载模板
-            window.location.href = uri + base64(template);
+            // window.location.href = uri + base64(template);
+
+            downloadEvt(uri + base64(template), a[0]['染色体'])
         };
 
-        // 输出base64编码
-        const base64 = (s) => window.btoa(unescape(encodeURIComponent(s)));
+        const tableToExcel2 = () => {
+            // 列标题
+            let str = `<tr>
+                ${arr.map(item => `<td>${item}</td>`).join('')}
+            </tr>`;
+
+            // 循环遍历，每行加入tr标签，每个单元格加td标签
+            for (let i = 0; i < jsonData2.length; i++) {
+                str += "<tr>";
+                for (const key in jsonData2[i]) {
+                    // 增加\t为了不让表格显示科学计数法或者其他格式
+                    str += `<td>${jsonData2[i][key] + "\t"}</td>`;
+                }
+                str += "</tr>";
+            }
+            // Worksheet名
+            const worksheet = "Sheet1";
+            const uri = "data:application/vnd.ms-excel;base64,";
+
+            // 下载的表格模板数据
+            const template = `<html xmlns:o="urn:schemas-microsoft-com:office:office" 
+                xmlns:x="urn:schemas-microsoft-com:office:excel" 
+                xmlns="http://www.w3.org/TR/REC-html40">
+                <head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
+                <x:Name>${worksheet}</x:Name>
+                <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet>
+                </x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
+                </head><body><table>${str}</table></body></html>`;
+            // 下载模板
+            // window.location.href = uri + base64(template);
+
+            downloadEvt(uri + base64(template), a[0]['染色体'])
+        };
+
+        function downloadEvt(url, fileName = '未知文件') {
+            const el = document.createElement('a');
+            el.style.display = 'none';
+            el.setAttribute('target', '_blank');
+            /**
+             * download的属性是HTML5新增的属性
+             * href属性的地址必须是非跨域的地址，如果引用的是第三方的网站或者说是前后端分离的项目(调用后台的接口)，这时download就会不起作用。
+             * 此时，如果是下载浏览器无法解析的文件，例如.exe,.xlsx..那么浏览器会自动下载，但是如果使用浏览器可以解析的文件，比如.txt,.png,.pdf....浏览器就会采取预览模式
+             * 所以，对于.txt,.png,.pdf等的预览功能我们就可以直接不设置download属性(前提是后端响应头的Content-Type: application/octet-stream，如果为application/pdf浏览器则会判断文件为 pdf ，自动执行预览的策略)
+             */
+            fileName && el.setAttribute('download', fileName);
+            el.href = url;
+            // console.log(el);
+            document.body.appendChild(el);
+            el.click();
+            document.body.removeChild(el);
+        }
     </script>
 </body>
 
