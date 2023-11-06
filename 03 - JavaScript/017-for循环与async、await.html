@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let arr = [];
+    // const list = [1, 2, 3, 4, 5];
+    // const fruits = ['apple', 'banana', 'orange'];
+    // const getFruit = (i) => {
+    //     return new Promise((resolve) => {
+    //         setTimeout(() => {
+    //             resolve(fruits[i]);
+    //         }, 1000);
+    //     });
+    // }
+    // const fun = async () => {
+    //     console.log('start');
+    //     for (let i = 0; i < fruits.length; i++) {
+    //         const fruit = await getFruit(i);
+    //         console.log(fruit);
+    //     }
+    //     console.log('end');
+    // }
+
+    // fun();
+
+    // arr = arr.concat(list);
+
+    // console.log('arr', arr);
+
+    let arr = [];
+    const list = [1, 2, 3, 4, 5];
+    const fruits = ['apple', 'banana', 'orange'];
+    const getFruit = (i) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(fruits[i]);
+            }, 1000);
+        });
+    }
+    const fun = () => {
+        console.log('start');
+        fruits.forEach(async (item, index) => {
+            const fruit = await getFruit(index);
+            console.log(fruit);
+        });
+        console.log('end');
+    }
+
+    fun();
+
+    arr = arr.concat(list);
+
+    console.log('arr', arr);
+</script>
+</html>
