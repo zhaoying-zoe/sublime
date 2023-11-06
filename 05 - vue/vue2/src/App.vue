@@ -1,19 +1,38 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="goAboutPage('about')">about</button>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  methods: {
+    goAboutPage(name) {
+      if (this.$route.name === name) {
+        this.$router.push({
+          name: 'refresh',
+          params: {
+            name,
+          },
+        });
+
+        // this.$router.push({path: 'xxx'}) 会将query参数添加到url中
+        // this.$router.push({
+        //   path: '/',
+        //   query: {
+        //     name
+        //   }
+        // })
+      } else {
+        this.$router.push({
+          name,
+        });
+      }
+    },
+  },
+};
 </script>
 
 <style>
