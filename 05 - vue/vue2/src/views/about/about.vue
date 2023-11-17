@@ -1,9 +1,9 @@
 <template>
-  <div class="hello">about page</div>
+    <div class="hello">about page</div>
 </template>
 
 <script>
-export default {
-  name: "aboutPage",
-};
+    export default {
+        name: 'aboutPage'
+    };
 </script>

@@ -19,10 +19,10 @@ const routes = [
         path: 'refresh',
         name: 'refresh',
         component: () => import('../components/refresh/refresh.vue')
-    },
-]
+    }
+];
 
 export default new Router({
     mode: 'history',
     routes
-})
+});

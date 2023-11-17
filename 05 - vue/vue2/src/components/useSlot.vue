@@ -14,16 +14,16 @@
 </template>
 <script>
 
-export default ({
-    name: 'useSlot',
-    data() {
-        return {
-            message: 'tom',
-            name: 'age'
-        };
-    },
-    mounted() {
-        console.error(this);
-    }
-})
+    export default ({
+        name: 'useSlot',
+        data() {
+            return {
+                message: 'tom',
+                name: 'age'
+            };
+        },
+        mounted() {
+            console.error(this);
+        }
+    });
 </script>

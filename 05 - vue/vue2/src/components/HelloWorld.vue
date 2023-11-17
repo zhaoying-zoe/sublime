@@ -50,81 +50,81 @@
 </template>
 
 <script>
-import useSlot from './useSlot.vue';
+    import useSlot from './useSlot.vue';
 
-export default {
-  name: 'HelloWorld',
-  components: {
-    useSlot
-  },
-  data() {
-    return {
-      valueData: 'use valueData',
-      valueObj: {
-        name: 'tom'
-      },
-      valueArr: [1, 2, 3, {name: 'tom'}]
+    export default {
+        name: 'HelloWorld',
+        components: {
+            useSlot
+        },
+        data() {
+            return {
+                valueData: 'use valueData',
+                valueObj: {
+                    name: 'tom'
+                },
+                valueArr: [1, 2, 3, {name: 'tom'}]
+            };
+        },
+        props: {
+            msg: String
+        },
+        methods: {
+            chageValue() {
+                this.valueData = this.valueData + Math.ceil(Math.random() * 10);
+            },
+            chageValueObj() {
+                this.valueObj.name = this.valueObj.name + Math.ceil(Math.random() * 10);
+            },
+            chageValueArr() {
+                // this.valueArr.push(Math.ceil(Math.random() * 10));
+                this.valueArr[3].name = Math.ceil(Math.random() * 10);
+            }
+        },
+        computed: {
+            computMsg() {
+                return 'use computMsg';
+            },
+            computedMethod() {
+                console.error(`computedMethod${ this.valueData}`);
+                return `computedMethod${ this.valueData}`;
+            }
+        },
+        filters: {
+            filterMoney(val) {
+                return `￥${ val}`;
+            },
+            filterTime(val) {
+                const year = new Date(val).getFullYear(); 
+                const month = new Date(val).getMonth(); 
+                const date = new Date(val).getDate(); 
+                return `${year}-${month + 1}-${date}`;
+            }
+        },
+        watch: {
+            valueData: {
+                handler(newVal, old) {
+                    console.error('valueData', newVal, old);
+                },
+                // immediate: true,
+                deep: true
+            },
+            valueObj: {
+                handler(newVal, old) {
+                    console.error('valueObj', newVal, old);
+                },
+                // immediate: true,
+                deep: true
+            },
+            valueArr: {
+                handler(newVal, old) {
+                    console.error('valueArr', newVal, old);
+                },
+                // immediate: true,
+                deep: true
+            }
+        }
     };
-  },
-  props: {
-    msg: String,
-  },
-  methods: {
-    chageValue() {
-      this.valueData = this.valueData + Math.ceil(Math.random() * 10);
-    },
-    chageValueObj() {
-      this.valueObj.name = this.valueObj.name + Math.ceil(Math.random() * 10);
-    },
-    chageValueArr() {
-      // this.valueArr.push(Math.ceil(Math.random() * 10));
-      this.valueArr[3].name = Math.ceil(Math.random() * 10);
-    }
-  },
-  computed: {
-    computMsg() {
-      return 'use computMsg';
-    },
-    computedMethod() {
-      console.error('computedMethod' + this.valueData);
-      return 'computedMethod' + this.valueData;
-    }
-  },
-  filters: {
-    filterMoney(val) {
-      return '￥' + val;
-    },
-    filterTime(val) {
-      const year = new Date(val).getFullYear() 
-      const month = new Date(val).getMonth() 
-      const date = new Date(val).getDate() 
-      return `${year}-${month + 1}-${date}`;
-    },
-  },
-  watch: {
-    valueData: {
-      handler(newVal, old) {
-        console.error('valueData', newVal, old);
-      },
-      // immediate: true,
-      deep: true
-    },
-    valueObj: {
-      handler(newVal, old) {
-        console.error('valueObj', newVal, old);
-      },
-      // immediate: true,
-      deep: true
-    },
-    valueArr: {
-      handler(newVal, old) {
-        console.error('valueArr', newVal, old);
-      },
-      // immediate: true,
-      deep: true
-    },
-  }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
