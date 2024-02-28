@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>import.meta</title>
+</head>
+<body>
+    <div>
+        import.meta是esm的一个新特性，用于获取当前模块的元数据，返回一个对象，包含以下属性：
+        <ul>
+            <li>url：当前模块的绝对路径</li>
+            <li>main：是否为主模块</li>
+        </ul>
+    </div>
+</body>
+<script type="module">
+    console.log(import.meta);
+    // {url: "file:///D:/wwwroot/learn/01%20-%20html/04%20-%20import.meta.html", main: true}
+    // url: "file:///D:/wwwroot/learn/01%20-%20html/04%20-%20import.meta.html"
+    // main: true
+    // __proto__: Object
+</script>
+</html>

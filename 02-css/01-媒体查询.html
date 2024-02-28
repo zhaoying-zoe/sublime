@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-媒体查询.html</title>
+  </head>
+  <style>
+    .common-create-clue-modal {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .item {
+      background-color: cadetblue;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 1000px) {
+      .common-create-clue-modal {
+        width: 660px;
+        flex-direction: column;
+      }
+    }
+
+    @media (min-width: 1001px) and (max-width: 1600px) {
+      .common-create-clue-modal {
+        width: 980px;
+      }
+      .common-create-clue-modal .item {
+        width: 50%;
+        flex: 0 0 calc(50% - 50px);
+      }
+    }
+
+    @media (min-width: 1601px) {
+      .common-create-clue-modal {
+        width: 1600px;
+      }
+      .common-create-clue-modal .item {
+        width: 33%;
+        flex: 0 0 calc(33%);
+      }
+    }
+  </style>
+  <body>
+    <div class="common-create-clue-modal">
+      <div class="item">内容1</div>
+      <div class="item">内容2</div>
+      <div class="item">内容3</div>
+      <!-- 更多内容 -->
+    </div>
+  </body>
+</html>
